@@ -11,9 +11,9 @@ public class Controller {
     private List<MedCard> dataBase = new ArrayList<>();
 
     public void searchPersonDiagnosis(){
-        Scanner scanner1 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите диагноз");
-        diagnose = scanner1.nextLine();
+        diagnose = scanner.nextLine();
         for (int i = 0; i < dataBase.size(); i++){
             if(dataBase.get(i).getPersonDiagnosis().equals(diagnose)) {
                 System.out.println(dataBase.get(i).toString());
@@ -22,19 +22,19 @@ public class Controller {
     }
 
     public void searchPersonMedCardNumber(){
-        Scanner scanner1 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int medCardMAX;
         int medCardMIN;
         System.out.println("Введите диапазон мед.карт");
         while(true){
             try {
                 System.out.println("Нижний предел");
-                medCardMIN = scanner1.nextInt();
+                medCardMIN = scanner.nextInt();
                 System.out.println("Верхний предел");
-                medCardMAX = scanner1.nextInt();
+                medCardMAX = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println("Ошибка. Повторите попытку");
-                scanner1.nextLine();
+                scanner.nextLine();
                 continue;
             }
             break;
@@ -48,27 +48,27 @@ public class Controller {
 
     public void addPerson(){
         MedCard medCard = new MedCard();
-        Scanner scanner1 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя пациента");
-        medCard.setPersonName(scanner1.nextLine());
+        medCard.setPersonName(scanner.nextLine());
         System.out.println("Введите фамилию пациента");
-        medCard.setPersonSurname(scanner1.nextLine());
+        medCard.setPersonSurname(scanner.nextLine());
         System.out.println("Введите адрес пациента");
-        medCard.setPersonAddress(scanner1.nextLine());
+        medCard.setPersonAddress(scanner.nextLine());
         System.out.println("Введите номер телефона пациента");
         while(true){
             try {
-                medCard.setPersonPhoneNumber(scanner1.nextLong());
+                medCard.setPersonPhoneNumber(scanner.nextLong());
             } catch (Exception e) {
                 System.out.println("Ошибка. Повторите попытку");
-                scanner1.nextLine();
+                scanner.nextLine();
                 continue;
             }
             break;
         }
-        scanner1.nextLine();
+        scanner.nextLine();
         System.out.println("Поставить диагноз пациенту");
-        medCard.setPersonDiagnosis(scanner1.nextLine());
+        medCard.setPersonDiagnosis(scanner.nextLine());
         medCard.setPersonID(dataBase.size() + 1);
         medCard.setPersonMedCardNumber(10000 + dataBase.size());
         dataBase.add(medCard);
